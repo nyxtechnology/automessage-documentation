@@ -6,4 +6,4 @@ Documentation for developers to integrate their applications with the Automessag
 ## Dependencies
 Automessage is currently integrated with the following email marketing services:
 
-**[Mailchimp]**: https://mailchimp.com
+**[Mailchimp]**[https://mailchimp.com]
