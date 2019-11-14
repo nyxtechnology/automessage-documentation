@@ -91,6 +91,7 @@ We expect to receive the events to be created in the structure below:
     * <b>eventStop:</b> <i>This is the event that cancels the sending of the scheduled email. This field is given a string.</i>    
 
 ##### We expect to receive the fields of each event within the <u>metadata</u> array.
+
 Example <i><b>scheduling_email</b></i>:<br>
 <i>It can be used for example to remind a user of an abandoned purchase.</i> 
 ```
@@ -134,12 +135,14 @@ Example <i><b>cancel_scheduling_email</b></i>:<br>
 ```
 -------------------------------------------
 #### To understand
+
 Please note that in 'Example <i><b>scheduling_email</b></i>' an email was scheduled to be 
 sent to 2020-11-17 and that this schedule should be canceled when <b><u>Automessage</u></b> 
 received the event **payment-completed** (<i>"eventStop": "payment-completed"</i>).<br>
 Then in the 'Example <i><b>cancel_scheduling_email</b></i>' the cancellation event has been sent 
 <i>("event": "payment-completed" </i>). Note that in addition to the event, was sent
 also the same values for the <b>'extenalId'</b> and <b>'to'</b> fields.
+
 ------------------------------------------
 * <b>cancel_all_scheduling_email:</b> <i>Cancels sending all scheduled email by <b>eventStop</b>. Below are the fields for this action to be performed, the required fields are with (*).</i>    
     * <b>* to:</b> <i>It is the recipient of the email. This field must be a valid email address.</i>
