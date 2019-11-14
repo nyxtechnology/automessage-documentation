@@ -77,7 +77,7 @@ We expect to receive the events to be created in the structure below:
 **event_name** <i>It is the name of your event, you can standardize as you prefer.</i><br>
 **actions** <i>This is the set of actions your event must perform. Each event can trigger one or several actions.</i><br>
 
-####We have the following actions available:
+#### We have the following actions available:
 * <b>scheduling_email:</b> <i>Schedules the sending of an email. Below are the fields for this action to be performed, the required fields are with (*).</i>
     * <b>* externalId:</b> <i>This is an id that should be unique in your system. This field accepts a string.</i>
     * <b>* to:</b> <i>It is the recipient of the scheduled email. This field must be a valid email address.</i>
@@ -90,7 +90,7 @@ We expect to receive the events to be created in the structure below:
     * <b>templateVariables:</b> <i>These are the dynamic variables of the template used in the scheduled email. This field receives a key/value array.</i>
     * <b>eventStop:</b> <i>This is the event that cancels the sending of the scheduled email. This field is given a string.</i>    
 
-#####We expect to receive the fields of each event within the <u>metadata</u> array.
+##### We expect to receive the fields of each event within the <u>metadata</u> array.
 Example <i><b>scheduling_email</b></i>:<br>
 <i>It can be used for example to remind a user of an abandoned purchase.</i> 
 ```
@@ -133,7 +133,7 @@ Example <i><b>cancel_scheduling_email</b></i>:<br>
 }
 ```
 -------------------------------------------
-####To understand
+#### To understand
 Please note that in 'Example <i><b>scheduling_email</b></i>' an email was scheduled to be 
 sent to 2020-11-17 and that this schedule should be canceled when <b><u>Automessage</u></b> 
 received the event **payment-completed** (<i>"eventStop": "payment-completed"</i>).<br>
