@@ -28,6 +28,11 @@ Automessage is currently integrated with the following email marketing services:
 **Api Key:** *Private API key by Mailgun.*<br>
 **From Email Address:** *Address registred in Mailgun. All emails will be sent from this address.*<br>
 
+[**Telegram**](https://telegram.org/)<br>
+To use Telegram's Automessage Bot, chat must be started by the user who will receive the messages. *Telegram's bot can't start a chat!*
+
+---
+
 ## Event Creation
 For now event creation needs to go through the Automessage development team. But dynamic event creation is already within our scope and will soon be released.<br>
 
