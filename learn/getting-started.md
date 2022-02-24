@@ -6,20 +6,10 @@ The purpose of this tutorial is to give a simple overview of **Automessage** eco
 
 **Automessage** works with predefined actions and uses custom events to trigger these actions.
 
-The event configuration is done in the `eventsMap.json` file and it should look like this:
+The event configuration is done in the `config/eventsMap.json` file. The event map is nothing more than a simple statement of which class and method each event _**'calls'**_ it should look like this:
 
 ```json
 {
-  "sendTelegramAlert": {
-    "classes": [
-      {
-        "name": "App\\Http\\Controllers\\TelegramController",
-        "methods": [
-          "sendMessage"
-        ]
-      }
-    ]
-  },
   "startPayment": {
     "classes": [
       {
@@ -53,11 +43,22 @@ To trigger an event you need to send a POST to the `api/webhook` route. JSON str
 
 ```json
 {
-  "event" : "sendTelegramAlert",
+  "event" : "startPayment",
   "metadata" :
   {
-    "to" : "123123",
-    "message" : "Hello World!"
+    "extenalId" : "your-project-checkout-a56fa78b-878f-41db-8518-2d2d842beAAs",
+    "name" : "John Wick",
+    "to" : "john-wick@wickmail.com",
+    "deliveryDate" : "2020-11-17",
+    "eventStop" : "paymentCompleted",
+    "templateVariables" : 
+    {
+      "product" : "AK-47",
+      "product-link" : "https://your-project.com/product/a56fa78b-878f-41db-8518-2d2d842beAAs"
+    },
+    "template" : "abandoned-purchase",
+    "subject" : "Your Ak-47 is still waiting for you"
   }
 }
 ```
+
