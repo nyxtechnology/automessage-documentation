@@ -5,8 +5,5 @@
 ## Learn
 
 * [Getting started](learn/getting-started.md)
-
-***
-
-* [Creating new integration](creating-new-integration.md)
-* [Telegram integration](telegram-integration.md)
+* [Creating new integration](learn/creating-new-integration.md)
+* [Telegram integration](learn/telegram-integration.md)

@@ -32,7 +32,7 @@ class TelegramController extends Controller
 }
 ```
 
-Let's pay attention to the `sendMessage` method that receives an array as a parameter, in this case named `$settings`. By default, every method that your event [_**'calls'**_](learn/getting-started.md#events-map) will receive an array with all the information received in the webhook. In this array the _params key_ will have as value all the information sent in the JSON [_metadata_](learn/getting-started.md#triggering-an-event) by POST so to access the _message_ for example just use `$settings['params']['message']`
+Let's pay attention to the `sendMessage` method that receives an array as a parameter, in this case named `$settings`. By default, every method that your event [_**'calls'**_](getting-started.md#events-map) will receive an array with all the information received in the webhook. In this array the _params key_ will have as value all the information sent in the JSON [_metadata_](getting-started.md#triggering-an-event) by POST so to access the _message_ for example just use `$settings['params']['message']`
 
 ### Mapping an event to your integration
 
