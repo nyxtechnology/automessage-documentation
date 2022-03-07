@@ -14,22 +14,18 @@ Now you need to configure your bot's communication `webhook`, for that use your 
 
 Open Telegram and search for the bot you created. Start chatting with the bot! (to avoid spam telegram bots cannot start a chat).
 
-If everything is correct, when using the `/start` command in the chat with your bot it should return the chat id, save the id because it is necessary to trigger the events for **Automessage**.
+If everything is correct, when using the `/start` command in the chat with your bot it should return the **chat id**, save the id because it is mandatory to send message.
 
 #### Using
 
-Now that you have the chat id, just make a POST request to **Automessage**, sending the _chat id_ (**to**) and the _message_ (**message**) in the JSON `metadata`.
+You have to configure an event that calls the `sendMessage` method of the `TelegramController` class. [Here's](getting-started.md#events-map) how to configure an event.
 
-```json
-  "event" : "sendTelegramAlert",
-  "metadata" :
-  {
-    "message" : "Hello World!",
-    "to" : "123456",
-  }
-}
-```
+{% hint style="warning" %}
+`sendMessage` method expects 2 parameters the _chat id_ (**to**) and the _message_ (**message**)
+{% endhint %}
+
+Now when **Automessage** receives a POST that satisfies all the conditions you configured in your `config/eventsMap.json`, the `sendMessage` method of the `TelegramController` class will be executed.
 
 #### Tip of the day
 
-The Telegram integration controller [class](creating-new-integration.md#controller-class) has the `receiveMessage` method which, as its name suggests, is responsible for receiving messages sent to your bot. You can use this method to improve your bot interaction just by implementing more responses in this method.
+The Telegram integration controller class has the `receiveMessage` method which, as its name suggests, is responsible for receiving messages sent to your bot. You can use this method to improve your bot interaction just by implementing more responses in this method.

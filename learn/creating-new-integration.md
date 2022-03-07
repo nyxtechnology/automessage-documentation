@@ -24,7 +24,7 @@ class TelegramController extends Controller
      */
     public function sendMessage($settings){
         try {
-            $this->telegram->sendMessage($settings['params']['to'], $settings['params']['message']);
+            $this->telegram->sendMessage($settings['to'], $settings['message']);
         } catch (InvalidArgumentException|Exception $e) {
             Log::error('TelegramController->sendMessage() ' . $e->getMessage());
         }
@@ -32,7 +32,7 @@ class TelegramController extends Controller
 }
 ```
 
-Let's pay attention to the `sendMessage` method that receives an array as a parameter, in this case named `$settings`. By default, every method that your event [_**'calls'**_](getting-started.md#events-map) will receive an array with all the information received in the webhook. In this array the _params key_ will have as value all the information sent in the JSON [_metadata_](getting-started.md#triggering-an-event) by POST so to access the _message_ for example just use `$settings['params']['message']`
+Let's pay attention to the `sendMessage` method that receives an array as a parameter, in this case named `$settings`. This parameter must be informed in the `config/eventsMap.json` (learn more [here](getting-started.md#events-map))
 
 ### Mapping an event to your integration
 
@@ -40,49 +40,43 @@ The next step is to map an event that calls the `sendMessage` method of the `Tel
 
 ```json
 {
-  "startPayment": {
-    "classes": [
-      {
-        "name": "App\\Http\\Controllers\\SchedulingController",
-        "methods": [
-          "deleteSchedulingEmails",
-          "saveSchedulingEmails"
-        ]
+  "boardActions": [
+    {
+      "conditions": {
+        "post.body.description": "act-completeChecklist",
+        "post.body.user": "gilberto.souza"
       },
-      {
-        "name": "App\\Http\\Controllers\\MailController",
-        "methods": [
-          "senMails"
-        ]
-      }
-    ]
-  },
-  "sendTelegramAlert": {
-    "classes": [
-      {
-        "name": "App\\Http\\Controllers\\TelegramController",
-        "methods": [
-          "sendMessage"
-        ]
-      }
-    ]
-  }
+      "classes": [
+        {
+          "class": "App\\Http\\Controllers\\TelegramController",
+          "methods": [
+            {
+              "sendMessage": {
+                "to": "123456789",
+                "message": "post.body.text"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
 }
 ```
 
-In this example, we mapped the `sendTelegramAlert` event that will call the `sendMessage` method of the `TelegramController` class we created previously.
+In this example, we mapped the `boardActions` event that will call the `sendMessage` method of the `TelegramController` class we created previously.
 
 ### Triggering the new event
 
-To trigger your event for **Automessage** you must POST to the `api/webhook` route. In our example, the `sendMessage` method of the `TelegramController` class only needs two information to send the message (**to** and **message**) so our JSON will look like this:
+To trigger an event see [here](getting-started.md#triggering-an-event). Of course you can send any JSON structure but in this case we are waiting for some information in the body of the POST for example.
 
 ```json
 {
-  "event" : "sendTelegramAlert",
-  "metadata" :
-  {
-    "message" : "Hello World!",
-    "to" : "123456",
-  }
+  "text": "any text here",
+  "cardId": "wwrsiJPar3z",
+  "listId": "qmHZX4edoy",
+  "boardId": "qmHZes",
+  "user": "gilberto.souza",
+  "description": "act-completeChecklist"
 }
 ```
