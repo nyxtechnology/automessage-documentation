@@ -68,7 +68,7 @@ In this example, we mapped the `boardActions` event that will call the `sendMess
 
 ### Triggering the new event
 
-To trigger an event see [here](getting-started.md#triggering-an-event). Of course you can send any JSON structure but in this case we are waiting for some information in the body of the POST for example.
+To trigger an event see [here](getting-started.md#triggering-an-event). Of course you can send any JSON structure but in this case we are waiting for some information in the **body** of the POST for example _**description**_, _**user**_ and _**text**_.
 
 ```json
 {
