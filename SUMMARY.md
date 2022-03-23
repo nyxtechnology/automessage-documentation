@@ -6,6 +6,7 @@
 
 * [Getting started](learn/getting-started.md)
 * [Creating new integration](learn/creating-new-integration.md)
+* [Scheduling Message](learn/scheduling-message.md)
 * [Telegram integration](learn/telegram-integration.md)
 
 ***
