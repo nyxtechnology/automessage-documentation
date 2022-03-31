@@ -115,4 +115,10 @@ You are now ready to create your own events in `eventsMap.json` and determine wh
 
 ### Triggering an event
 
-To trigger an event you can do programmatically sending a POST request to the `api/webhook` route. Or if you use a third-party system, just configure the _webhook_ of this system for the `api/webhook` route. You can send any JSON structure.
+Configure your private webhook key in the `.env` file. This is more of a security measure, so your webhook url will be secret.
+
+```
+WEBHOOK_KEY=your-Key-secret-here
+```
+
+To trigger an event you can do programmatically sending a POST request to the `api/webhook/your-Key-secret-here route`. Or if you use a third-party system, just configure the _webhook_ of this system for the `api/webhook/your-Key-secret-here` route. You can send any JSON structure.
