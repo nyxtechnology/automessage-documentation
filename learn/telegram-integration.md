@@ -4,7 +4,7 @@ Integration with the [Telegram](https://telegram.org) service has already been i
 
 ### First things first
 
-You have to create your **bot** to do this you should follow the Telegram documentation [here](https://core.telegram.org/bots#6-botfather). When you finish creating your bot you will receive an authorization token. This token must be entered in the `.env` file in the variable `TELEGRAM_BOT_TOKEN`&#x20;
+You have to create your **bot** to do this you should follow the Telegram documentation [here](https://core.telegram.org/bots#6-botfather). When you finish creating your bot you will receive an authorization token. This token must be entered in the `.env` file in the variable `TELEGRAM_BOT_TOKEN`
 
 ```
 TELEGRAM_BOT_TOKEN=31342410:AAHtVjbT3OolC_Y-hH_mAwalllpwrioc
@@ -18,13 +18,13 @@ If everything is correct, when using the `/start` command in the chat with your 
 
 ### Using
 
-You have to configure an event that calls the `sendMessage` method of the `TelegramController` class. [Here's](getting-started.md#events-map) how to configure an event.
+You have to configure an event that calls the `sendMessage` method of the `TelegramController` controller. [Here's](getting-started.md#events-map) how to configure an event.
 
 {% hint style="warning" %}
 `sendMessage` method expects 2 parameters the _chat id_ (**to**) and the _message_ (**message**)
 {% endhint %}
 
-Now when **Automessage** receives a POST that satisfies all the conditions you configured in your `config/eventsMap.json`, the `sendMessage` method of the `TelegramController` class will be executed.
+Now when **Automessage** receives a POST that satisfies all the conditions you configured in your `config/eventsMap.json`, the `sendMessage` method of the `TelegramController` controller will be executed.
 
 #### Tip of the day
 

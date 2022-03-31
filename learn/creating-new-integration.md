@@ -42,13 +42,15 @@ The next step is to map an event that calls the `sendMessage` method of the `Tel
 {
   "boardActions": [
     {
-      "conditions": {
-        "post.body.description": "act-completeChecklist",
-        "post.body.user": "gilberto.souza"
-      },
-      "classes": [
+      "conditions": [
         {
-          "class": "App\\Http\\Controllers\\TelegramController",
+          "post.body.description": "act-completeChecklist",
+          "post.body.user": "gilberto.souza"
+        }
+      ],
+      "messageControllers": [
+        {
+          "controller": "App\\Http\\Controllers\\TelegramController",
           "methods": [
             {
               "sendMessage": {
